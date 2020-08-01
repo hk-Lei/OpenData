@@ -26,7 +26,7 @@ class USStockAgent(RestAgent):
             return None, ''
 
     def _get_symbols(self, market):
-        url = 'https://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=%s&render=download' % market
+        url = 'https://old.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=%s&render=download' % market
         response = self.do_request(url, None, method='GET', type='binary')
         if response is not None:
             df = pd.read_csv(io.BytesIO(response))
@@ -62,3 +62,8 @@ class USStockAgent(RestAgent):
 
     def get_split(self, symbol):
         return self._get_data(symbol, 'split')
+
+if __name__ == '__main__':
+    us = USStockAgent()
+    result = us.get_symbols()
+    print(result)

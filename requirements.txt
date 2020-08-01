@@ -4,3 +4,4 @@ pandas
 demjson
 progressbar2
 pytesseract
+proxyscrape
